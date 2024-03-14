@@ -9,36 +9,6 @@ const isNumber = (val: unknown): val is number => {
   return toString.call(val) === `[object ${Number}]`
 }
 
-const getBaseDate = (time: number | Date) => {
-  const day = isNumber(time) ? new Date(time) : time
-  return {
-    year: day.getFullYear(),
-    month: day.getMonth(),
-    day: day.getDate(),
-    week: day.getDay(),
-    hours: day.getHours(),
-    minutes: day.getMinutes(),
-    seconds: day.getSeconds(),
-    date: day.getTime(),
-    quarter: Math.floor((day.getMonth() + 3) / 3) // 季度
-  }
-}
-
-export function strToDate(str: string) {
-  const d = str.match(REGEX_PARSE)
-  if (d) {
-    const m = Number(d[2]) - 1 || 0
-    return new Date(
-      Number(d[1]),
-      m,
-      Number(d[3] || 1),
-      Number(d[4] || 0),
-      Number(d[5] || 0),
-      Number(d[6] || 0)
-    )
-  }
-}
-
 function formatDate(time: number | Date, fmt = 'YYYY-mm-dd HH:MM:SS') {
   const { year, month, day, hours, minutes, seconds } = getBaseDate(time)
   const patternObj = {
@@ -66,6 +36,21 @@ function formatDate(time: number | Date, fmt = 'YYYY-mm-dd HH:MM:SS') {
   return fmt
 }
 
+const getBaseDate = (time: number | Date) => {
+  const day = isNumber(time) ? new Date(time) : time
+  return {
+    year: day.getFullYear(),
+    month: day.getMonth() + 1,
+    day: day.getDate(),
+    week: day.getDay(),
+    hours: day.getHours(),
+    minutes: day.getMinutes(),
+    seconds: day.getSeconds(),
+    date: day.getTime(),
+    quarter: Math.floor((day.getMonth() + 3) / 3) // 季度
+  }
+}
+
 const getTimestamp = (time?: number | Date) => {
   if (!time) time = new Date()
   return isNumber(time) ? time : time.getTime()
@@ -84,11 +69,26 @@ const getHourTimestamp = (hour = 1) => {
 }
 
 const getDaysTimestamp = (days = 1) => {
-  return days * 24 * getHourTimestamp(60)
+  return days * getHourTimestamp(24)
 }
 
 const getWeekTimestamp = (week = 1) => {
   return week * getDaysTimestamp(7)
+}
+
+export function strToDate(str: string) {
+  const d = str.match(REGEX_PARSE)
+  if (d) {
+    const m = Number(d[2]) - 1 || 0
+    return new Date(
+      Number(d[1]),
+      m,
+      Number(d[3] || 1),
+      Number(d[4] || 0),
+      Number(d[5] || 0),
+      Number(d[6] || 0)
+    )
+  }
 }
 
 export const format = (time: number | Date, format = 'YYYY-mm-dd HH:MM:SS') => {
