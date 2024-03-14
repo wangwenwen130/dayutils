@@ -1,6 +1,5 @@
 export declare function strToDate(str: string): Date | undefined;
-export declare function formatDate(time: number | Date, fmt?: string): string;
-export declare const format: (format?: string, time?: number | Date) => string;
+export declare const format: (time: number | Date, format?: string) => string;
 export declare const getTimestampBefore: (timestamp: number, carDate?: number | Date) => Date;
 export declare const getTimestampAfter: (timestamp: number, carDate?: number | Date) => Date;
 export declare const isDayBefore: (days: number | Date, carDate?: number | Date) => boolean;

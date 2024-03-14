@@ -1,5 +1,5 @@
-const babel = require('rollup-plugin-babel')
-import terser from '@rollup/plugin-terser'
+const babel = require('@rollup/plugin-babel')
+const terser = require('@rollup/plugin-terser')
 
 const path = require('path')
 const nodeResolve = require('@rollup/plugin-node-resolve')
