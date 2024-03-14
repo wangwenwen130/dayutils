@@ -39,7 +39,7 @@ export function strToDate(str: string) {
   }
 }
 
-export function formatDate(time: number | Date, fmt = 'YYYY-mm-dd HH:MM:SS') {
+function formatDate(time: number | Date, fmt = 'YYYY-mm-dd HH:MM:SS') {
   const { year, month, day, hours, minutes, seconds } = getBaseDate(time)
   const patternObj = {
     'Y+': String(year), // 年
@@ -91,8 +91,7 @@ const getWeekTimestamp = (week = 1) => {
   return week * getDaysTimestamp(7)
 }
 
-export const format = (format = 'YYYY-mm-dd HH:MM:SS', time?: number | Date) => {
-  if (!time) time = new Date()
+export const format = (time: number | Date, format = 'YYYY-mm-dd HH:MM:SS') => {
   return formatDate(isNumber(time) ? time : time.getTime(), format)
 }
 
