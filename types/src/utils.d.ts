@@ -1,0 +1,25 @@
+export declare function strToDate(str: string): Date | undefined;
+export declare const format: (time: number | Date, format?: string) => string;
+export declare const getTimestampBefore: (timestamp: number, carDate?: number | Date) => Date;
+export declare const getTimestampAfter: (timestamp: number, carDate?: number | Date) => Date;
+export declare const isDayBefore: (days: number | Date, carDate?: number | Date) => boolean;
+export declare const isDayAfter: (days: number | Date, carDate?: number | Date) => boolean;
+export declare const isDuringBetween: (start: number | Date, end: number | Date, curDate?: number | Date) => boolean;
+export declare const getWeeKBefore: (weeks: number, carDate?: number | Date) => Date;
+export declare const getWeekAfter: (weeks: number, carDate?: number | Date) => Date;
+export declare const getDayBefore: (days: number, carDate?: number | Date) => Date;
+export declare const getDayAfter: (days: number, carDate?: number | Date) => Date;
+export declare const getHourBefore: (hours: number, carDate?: number | Date) => Date;
+export declare const getHourAfter: (hours: number, carDate?: number | Date) => Date;
+export declare const getMinBefore: (mins: number, carDate?: number | Date) => Date;
+export declare const getMinAfter: (mins: number, carDate?: number | Date) => Date;
+export declare const getSecondBefore: (seconds: number, carDate?: number | Date) => Date;
+export declare const getSecondAfter: (seconds: number, carDate?: number | Date) => Date;
+export declare const getDayStart: (carDate: number | Date) => Date;
+export declare const getDayEnd: (carDate: number | Date) => Date;
+export declare const countDownDate: (mark: number | Date, carDate?: number | Date) => {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+};
