@@ -1,5 +1,5 @@
 {
-  "name": "dayutils",
+  "name": "day-utils",
   "version": "1.0.0",
   "description": "Simple time processing tools",
   "main": "dist/es/index.js",
@@ -22,7 +22,7 @@
     "dist",
     "types"
   ],
-  "author": "wangww",
+  "author": "wangwenwen",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.24.0",
