@@ -1,6 +1,6 @@
 {
-  "name": "day-utils",
-  "version": "1.0.0",
+  "name": "day-util",
+  "version": "1.0.1",
   "description": "Simple time processing tools",
   "main": "dist/es/index.js",
   "scripts": {

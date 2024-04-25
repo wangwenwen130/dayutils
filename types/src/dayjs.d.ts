@@ -28,6 +28,12 @@ export declare class Dayjs {
     toSecondAfter(seconds: number): this;
     setStartTime(): this;
     setEndTime(): this;
+    countDownDate(mark: number | Date): {
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+    };
     toString(): string;
 }
 export declare const dayPipe: (Date?: number | Date | undefined) => Dayjs;
