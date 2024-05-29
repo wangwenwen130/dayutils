@@ -12,6 +12,7 @@ export declare class Dayjs {
         date: number;
         quarter: number;
     };
+    get getTime(): number;
     format(format?: string): string;
     isDayBofore(days: number | Date): boolean;
     isDayAfter(days: number | Date): boolean;

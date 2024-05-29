@@ -29,6 +29,10 @@ export class Dayjs {
     return getBaseDate(this.day)
   }
 
+  get getTime() {
+    return this.day.getTime()
+  }
+
   format(format = 'YYYY-mm-dd HH:MM:SS') {
     return formatDate(this.day, format)
   }

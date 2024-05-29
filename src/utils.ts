@@ -95,12 +95,12 @@ export const getSecondAfter = (seconds: number, carDate?: number | Date) => {
 
 export const getDayStart = (carDate: number | Date): Date => {
   const { year, month, day } = getBaseDate(carDate)
-  return new Date(year, month, day, 0, 0, 0)
+  return new Date(year, month - 1, day, 0, 0, 0)
 }
 
 export const getDayEnd = (carDate: number | Date): Date => {
   const { year, month, day } = getBaseDate(carDate)
-  return new Date(year, month, day, 23, 59, 59)
+  return new Date(year, month - 1, day, 23, 59, 59)
 }
 
 export const countDownDate = (mark: number | Date, carDate?: number | Date) => {
