@@ -1,4 +1,12 @@
-import { getBaseDate, isNumber, formatDate } from './help'
+import {
+  getBaseDate,
+  isNumber,
+  formatDate,
+  getDaysTimestamp,
+  getHourTimestamp,
+  getMinTimestamp,
+  getSecondTimestamp
+} from './help'
 import {
   isDayBefore,
   isDayAfter,
@@ -58,7 +66,19 @@ export class Dayjs {
     this.day = getWeekAfter(weeks, this.day)
     return this
   }
-  diff(days: number) {
+  diff(days: number, type: 'day' | 'hour' | 'min' | 'sec' = 'day') {
+    const curDays = isNumber(days) ? new Date(days) : days
+    const diff = this.day.getTime() - curDays.getTime()
+
+    const map = {
+      day: () => diff / getDaysTimestamp(),
+      hour: () => diff / getHourTimestamp(),
+      min: () => diff / getMinTimestamp(),
+      sec: () => diff / getSecondTimestamp()
+    }
+    return map[type]()
+  }
+  subtrac(days: number) {
     this.day = getDayBefore(days, this.day)
     return this
   }
@@ -148,3 +168,7 @@ export class Dayjs {
 }
 
 export const dayPipe = (Date?: number | Date) => new Dayjs(Date)
+
+console.log(
+  dayPipe(new Date().getTime() + 1000 * 60 * 60 * 24 * 3).diff(new Date().getTime(), 'day')
+)
