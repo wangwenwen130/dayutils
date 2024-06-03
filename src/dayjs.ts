@@ -58,16 +58,34 @@ export class Dayjs {
     this.day = getWeekAfter(weeks, this.day)
     return this
   }
+  diff(days: number) {
+    this.day = getDayBefore(days, this.day)
+    return this
+  }
+  add(days: number) {
+    this.day = getDayAfter(days, this.day)
+    return this
+  }
+  /**
+   *  后续废弃
+   */
   toDayBefore(days: number) {
     this.day = getDayBefore(days, this.day)
     return this
   }
 
+  /**
+   *  后续废弃
+   */
   toDayAfter(days: number) {
     this.day = getDayAfter(days, this.day)
     return this
   }
 
+  toSetHours(hours: number, min?: number, sec?: number, ms?: number) {
+    this.day.setHours(hours, min, sec, ms)
+    return this
+  }
   toHourBefore(hours: number) {
     this.day = getHourBefore(hours, this.day)
     return this
@@ -97,12 +115,24 @@ export class Dayjs {
     this.day = getSecondAfter(seconds, this.day)
     return this
   }
-
+  setDayStart() {
+    this.day = getDayStart(this.day)
+    return this
+  }
+  /**
+   *  后续废弃
+   */
   setStartTime() {
     this.day = getDayStart(this.day)
     return this
   }
-
+  setDayEnd() {
+    this.day = getDayEnd(this.day)
+    return this
+  }
+  /**
+   *  后续废弃
+   */
   setEndTime() {
     this.day = getDayEnd(this.day)
     return this

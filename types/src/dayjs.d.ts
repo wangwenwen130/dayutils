@@ -19,15 +19,32 @@ export declare class Dayjs {
     isDuringBetween(start: number | Date, end: number | Date): boolean;
     toWeekBefore(weeks: number): this;
     toWeekAfter(weeks: number): this;
+    diff(days: number): this;
+    add(days: number): this;
+    /**
+     *  后续废弃
+     */
     toDayBefore(days: number): this;
+    /**
+     *  后续废弃
+     */
     toDayAfter(days: number): this;
+    toSetHours(hours: number, min?: number, sec?: number, ms?: number): this;
     toHourBefore(hours: number): this;
     toHourAfter(hours: number): this;
     toMinBefore(mins: number): this;
     toMinAfter(mins: number): this;
     toSecondBefore(seconds: number): this;
     toSecondAfter(seconds: number): this;
+    setDayStart(): this;
+    /**
+     *  后续废弃
+     */
     setStartTime(): this;
+    setDayEnd(): this;
+    /**
+     *  后续废弃
+     */
     setEndTime(): this;
     countDownDate(mark: number | Date): {
         days: number;
