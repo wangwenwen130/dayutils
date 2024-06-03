@@ -115,7 +115,7 @@ export class Dayjs {
     this.day = getSecondAfter(seconds, this.day)
     return this
   }
-  setDayStart() {
+  setDayStartTime() {
     this.day = getDayStart(this.day)
     return this
   }
@@ -126,7 +126,7 @@ export class Dayjs {
     this.day = getDayStart(this.day)
     return this
   }
-  setDayEnd() {
+  setDayEndTime() {
     this.day = getDayEnd(this.day)
     return this
   }
