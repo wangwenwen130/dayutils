@@ -5,12 +5,13 @@ export declare function formatDate(time: number | Date, fmt?: string): string;
 export declare const getBaseDate: (time: number | Date) => {
     year: number;
     month: number;
-    day: number;
+    date: number;
+    /**星期几 */
     week: number;
     hours: number;
     minutes: number;
     seconds: number;
-    date: number;
+    timestamp: number;
     quarter: number;
 };
 export declare const getTimestamp: (time?: number | Date) => number;

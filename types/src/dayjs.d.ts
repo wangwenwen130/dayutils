@@ -4,12 +4,12 @@ export declare class Dayjs {
     get baseDate(): {
         year: number;
         month: number;
-        day: number;
+        date: number;
         week: number;
         hours: number;
         minutes: number;
         seconds: number;
-        date: number;
+        timestamp: number;
         quarter: number;
     };
     get getTime(): number;
@@ -19,18 +19,14 @@ export declare class Dayjs {
     isDuringBetween(start: number | Date, end: number | Date): boolean;
     toWeekBefore(weeks: number): this;
     toWeekAfter(weeks: number): this;
-    diff(days: number, type?: 'day' | 'hour' | 'min' | 'sec'): number;
-    subtrac(days: number): this;
-    add(days: number): this;
-    /**
-     *  后续废弃
-     */
+    diff(days: number, type?: 'day' | 'hour' | 'min' | 'sec' | 'week'): number;
+    subtrac(days: number, type?: 'day' | 'hour' | 'min' | 'sec' | 'week'): this;
+    add(days: number, type?: 'day' | 'hour' | 'min' | 'sec' | 'week'): this;
     toDayBefore(days: number): this;
-    /**
-     *  后续废弃
-     */
     toDayAfter(days: number): this;
-    toSetHours(hours: number, min?: number, sec?: number, ms?: number): this;
+    setHours(hours: number, min?: number, sec?: number, ms?: number): this;
+    setFullYear(year: number, month?: number, date?: number): this;
+    setDate(year: number, month?: number, date?: number, hours?: number, min?: number, sec?: number, ms?: number): this;
     toHourBefore(hours: number): this;
     toHourAfter(hours: number): this;
     toMinBefore(mins: number): this;
