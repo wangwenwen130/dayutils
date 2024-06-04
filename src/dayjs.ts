@@ -168,7 +168,3 @@ export class Dayjs {
 }
 
 export const dayPipe = (Date?: number | Date) => new Dayjs(Date)
-
-console.log(
-  dayPipe(new Date().getTime() + 1000 * 60 * 60 * 24 * 3).diff(new Date().getTime(), 'day')
-)
