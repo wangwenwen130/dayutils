@@ -33,12 +33,12 @@ export declare class Dayjs {
     toMinAfter(mins: number): this;
     toSecondBefore(seconds: number): this;
     toSecondAfter(seconds: number): this;
-    setDayStartTime(): this;
+    setDateStartTime(): this;
     /**
      *  后续废弃
      */
     setStartTime(): this;
-    setDayEndTime(): this;
+    setDateEndTime(): this;
     /**
      *  后续废弃
      */
