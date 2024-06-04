@@ -9,15 +9,17 @@ export const isNumber = (val: unknown): val is number => {
   return toString.call(val) === `[object Number]`
 }
 
-export function formatDate(time: number | Date, fmt = 'YYYY-mm-dd HH:MM:SS') {
-  const { year, month, day, hours, minutes, seconds } = getBaseDate(time)
+export function formatDate(time: number | Date, fmt = 'YYYY-MM-DD HH:mm:ss') {
+  const { year, month, date, hours, minutes, seconds } = getBaseDate(time)
   const patternObj = {
     'Y+': String(year), // 年
-    'm+': String(month + 1), // 月
-    'd+': String(day), // 日
+    'M+': String(month), // 月
+    'D+': String(date), // 日
+    'd+': String(date), // 日
     'H+': String(hours), // 时
-    'M+': String(minutes), // 分
-    'S+': String(seconds) // 秒
+    'h+': String(hours > 12 ? hours - 12 : hours), // 时
+    'm+': String(minutes), // 分
+    's+': String(seconds) // 秒
     // 有其他格式化字符需求可以继续添加，必须转化成字符串
   }
   type K = keyof typeof patternObj
@@ -41,12 +43,13 @@ export const getBaseDate = (time: number | Date) => {
   return {
     year: day.getFullYear(),
     month: day.getMonth() + 1,
-    day: day.getDate(),
+    date: day.getDate(),
+    /**星期几 */
     week: day.getDay(),
     hours: day.getHours(),
     minutes: day.getMinutes(),
     seconds: day.getSeconds(),
-    date: day.getTime(),
+    timestamp: day.getTime(),
     quarter: Math.floor((day.getMonth() + 3) / 3) // 季度
   }
 }

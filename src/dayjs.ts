@@ -42,7 +42,7 @@ export class Dayjs {
     return this.day.getTime()
   }
 
-  format(format = 'YYYY-mm-dd HH:MM:SS') {
+  format(format = 'YYYY-MM-DD HH:mm:ss') {
     return formatDate(this.day, format)
   }
 
@@ -130,10 +130,40 @@ export class Dayjs {
     return this
   }
 
-  toSetHours(hours: number, min?: number, sec?: number, ms?: number) {
-    this.day.setHours(hours, min, sec, ms)
+  setHours(hours: number, min?: number, sec?: number, ms?: number) {
+    const base = this.baseDate
+    this.day.setHours(hours, min || base.minutes, sec || base.seconds, ms || 0)
     return this
   }
+
+  setFullYear(year: number, month?: number, date?: number) {
+    const base = this.baseDate
+    this.day.setFullYear(year, month || base.month - 1, date || base.date)
+    return this
+  }
+
+  setDate(
+    year: number,
+    month?: number,
+    date?: number,
+    hours?: number,
+    min?: number,
+    sec?: number,
+    ms?: number
+  ) {
+    const base = this.baseDate
+    this.day = new Date(
+      year,
+      (month && month - 1) || base.month,
+      date || base.date,
+      hours || base.hours,
+      min || base.minutes,
+      sec || base.seconds,
+      ms || 0
+    )
+    return this
+  }
+
   toHourBefore(hours: number) {
     this.day = getHourBefore(hours, this.day)
     return this
