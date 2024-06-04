@@ -5,7 +5,8 @@ import {
   getDaysTimestamp,
   getHourTimestamp,
   getMinTimestamp,
-  getSecondTimestamp
+  getSecondTimestamp,
+  getWeekTimestamp
 } from './help'
 import {
   isDayBefore,
@@ -66,7 +67,7 @@ export class Dayjs {
     this.day = getWeekAfter(weeks, this.day)
     return this
   }
-  diff(days: number, type: 'day' | 'hour' | 'min' | 'sec' = 'day') {
+  diff(days: number, type: 'day' | 'hour' | 'min' | 'sec' | 'week' = 'day') {
     const curDays = isNumber(days) ? new Date(days) : days
     const diff = this.day.getTime() - curDays.getTime()
 
@@ -74,29 +75,56 @@ export class Dayjs {
       day: () => diff / getDaysTimestamp(),
       hour: () => diff / getHourTimestamp(),
       min: () => diff / getMinTimestamp(),
-      sec: () => diff / getSecondTimestamp()
+      sec: () => diff / getSecondTimestamp(),
+      week: () => diff / getWeekTimestamp()
     }
-    return map[type]()
+    return Math.floor(map[type]())
   }
-  subtrac(days: number) {
-    this.day = getDayBefore(days, this.day)
+  subtrac(days: number, type: 'day' | 'hour' | 'min' | 'sec' | 'week' = 'day') {
+    switch (type) {
+      case 'day':
+        this.day = getDayBefore(days, this.day)
+        break
+      case 'hour':
+        this.day = getHourBefore(days, this.day)
+        break
+      case 'min':
+        this.day = getMinBefore(days, this.day)
+        break
+      case 'sec':
+        this.day = getSecondBefore(days, this.day)
+        break
+      case 'week':
+        this.day = getWeeKBefore(days, this.day)
+        break
+    }
     return this
   }
-  add(days: number) {
-    this.day = getDayAfter(days, this.day)
+  add(days: number, type: 'day' | 'hour' | 'min' | 'sec' | 'week' = 'day') {
+    switch (type) {
+      case 'day':
+        this.day = getDayAfter(days, this.day)
+        break
+      case 'hour':
+        this.day = getHourAfter(days, this.day)
+        break
+      case 'min':
+        this.day = getMinAfter(days, this.day)
+        break
+      case 'sec':
+        this.day = getSecondAfter(days, this.day)
+        break
+      case 'week':
+        this.day = getWeekAfter(days, this.day)
+        break
+    }
     return this
   }
-  /**
-   *  后续废弃
-   */
   toDayBefore(days: number) {
     this.day = getDayBefore(days, this.day)
     return this
   }
 
-  /**
-   *  后续废弃
-   */
   toDayAfter(days: number) {
     this.day = getDayAfter(days, this.day)
     return this
